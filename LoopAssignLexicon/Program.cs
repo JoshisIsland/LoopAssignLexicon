@@ -11,7 +11,7 @@
 
         while (runProgram)
             {
-            Console.WriteLine("Välkommen till menyn, här navigerar du via ett antal nummer. \n För att se priser baserat på ålder, tryck 1 \n För att räkna ut pris för en större grupp, tryck 2 \n För att avsluta programmet, tryck 0");
+            Console.WriteLine("Välkommen till menyn, här navigerar du via ett antal nummer. \n För att se priser baserat på ålder, tryck 1 \n För att räkna ut pris för en större grupp, tryck 2 \n För att skirva ut nån text 10 gånger av nån anledning, tryck 3 \n För att avsluta programmet, tryck 0");
             choice = int.Parse(Console.ReadLine());
 
             switch (choice)
@@ -62,8 +62,18 @@
                 }
                 case 3:
                     {
-
+                            Console.WriteLine("Skriv nån random text:");
+                            string text = Console.ReadLine();
+                            for (int i = 0; i < 10; i++)
+                            {
+                                Console.Write(i+1 + " " + text + " ");
+                            }
                             break;
+                    }
+                case 4:
+                    {
+
+                        break;
                     }
                 default:
                     Console.WriteLine("Detta val finns ej, var vänlig försök igen");
