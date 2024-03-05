@@ -7,7 +7,6 @@
 
             bool runProgram = true;
             int choice;
-            int totalPrice = 0;
 
             while (runProgram)
             {
@@ -23,43 +22,17 @@
                         Console.WriteLine("Var god ange ålder:");
                         string ageInput = Console.ReadLine();
                         int age = int.Parse(ageInput);
-                        if (age < 20)
-                        {
-                            Console.WriteLine("Ungdomspris: 80:-");
-                        }
-                        else if (age > 64)
-                        {
-                            Console.WriteLine("Pensionärspris: 90:-");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Standardpris: 120:-");
-                        }
+
+                        Prices(age);
+
                         break;
                     case 2:
                         Console.WriteLine("Hur många personer?");
                         int people = int.Parse(Console.ReadLine());
-                        int[] ageOfPeople = new int[people];
+                        int[] listOfPeople = new int[people];
 
-                        for (int i = 0; i < people; i++)
-                        {
-                            Console.WriteLine("Ange ålder för person " + (i + 1));
-                            ageOfPeople[i] = int.Parse(Console.ReadLine());
+                        CalculateTotalCost(people, listOfPeople);
 
-                            if (ageOfPeople[i] < 20)
-                            {
-                                totalPrice += 80;
-                            }
-                            else if (ageOfPeople[i] > 64)
-                            {
-                                totalPrice += 90;
-                            }
-                            else
-                            {
-                                totalPrice += 120;
-                            }
-                        }
-                        Console.WriteLine("För " + people + " personer kommer totalkostnaden för sällskapet bli " + totalPrice + ":-");
                         break;
                     case 3:
                         Console.WriteLine("Skriv nån random text:");
@@ -87,6 +60,44 @@
                         break;
                 }
             }
+        }
+        static void Prices(int age)
+        {
+            if (age < 20)
+            {
+                Console.WriteLine("Ungdomspris: 80:-");
+            }
+            else if (age > 64)
+            {
+                Console.WriteLine("Pensionärspris: 90:-");
+            }
+            else
+            {
+                Console.WriteLine("Standardpris: 120:-");
+            }
+        }
+        static void CalculateTotalCost(int people, int[] ageOfPeople)
+        {
+            int totalPrice = 0;
+            for (int i = 0; i < people; i++)
+            {
+                Console.WriteLine("Ange ålder för person " + (i + 1));
+                ageOfPeople[i] = int.Parse(Console.ReadLine());
+
+                if (ageOfPeople[i] < 20)
+                {
+                    totalPrice += 80;
+                }
+                else if (ageOfPeople[i] > 64)
+                {
+                    totalPrice += 90;
+                }
+                else
+                {
+                    totalPrice += 120;
+                }
+            }
+            Console.WriteLine("För " + people + " personer kommer totalkostnaden för sällskapet bli " + totalPrice + ":-");
         }
     }
 }
